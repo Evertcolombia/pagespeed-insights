@@ -1,0 +1,1261 @@
+1- Meta viewport
+
+meta viwport, esta es una etiqueta de metadatos que te ayudará a configurar tu website para que sea visible en dispositivos de menor tamaño. 
+
+es el primer paso a la hora de hacer responsive design. Para usarlo vamos al index.html en el header y agregamos el siguiente tag
+
+<meta name="viewport" content="widht=device-widht, initial-scale=1">
+
+2-Unidades relativas de medida:
+
+Porcentaje: longitud referente al tamaño de los elementos padre
+
+em: unidad relativa al tamaño de fuente especificada más cercano, incluyendo su propio elemento en ocasiones
+
+rem: unidad relativa al tamaño de fuente especificada en el ancestro más lejano (html o body)
+
+vw / vh: unidad relativa porcentual con respecto al viewport
+
+
+
+4-Primeros media queries, 
+ 
+
+ los media queries tienen varias formas de incluirse, pueden ser atravez de  un link en nuestro html que llame a un archivo 
+
+ <link rel="stylesheet" href="css/media.css" media="screen and (max-widt: 768px)" />
+
+ y tendriamos que crear ese archivo
+
+ otra forma es usando el tag style y dentro declaramos esos media queries
+
+ <style>
+ 	@media screen and (msx-width: 768px) {
+ 		content
+ 	}
+ </style>
+
+
+y la otra forma es haciendol desde la misma hoja de estilos  en este caso estyle.css
+
+/*desktop first que empieces desde el mq mas grande*/
+
+/*estan son las medidad estandar por lo cual se recomienda usar esas primero luego poner lo qwue sea necesario, asi le estamos apuntando en la mayor cantidad de dispositivos*/
+
+@media screen and (max-width: 1024px) {
+	content
+}
+
+@media screen and (max-width: 768px) {
+	content
+}
+
+@media screen and (max-width: 480px) {
+	content
+}
+
+@media screen and (max-width: 320px) {
+	content
+}
+
+
+
+5-Diseño elástico con max-width y flex-wrap
+
+
+//Como te habrás dado cuenta tu proyecto está desordenado aunque carga en el viewport. Por esta razón en esta clase aprenderás a ordenar tu proyecto por medio del uso de contenedores flexibles, que varíen su tamaño según la amplitud con la que cuentan en diversos dispositivos y permitan una óptima visualización.
+
+//Por otro lado, para hacer esto posible, aprenderás a aplicar las etiquetas de max-width y flex- wrap; éstas también te ayudarán a evitar que tu usuario necesite navegar la página de forma horizontal, pues la información se organizará en forma vertical para facilitar la experiencia.
+
+//en esta clase simplemente vamos a romper los tamaños fijos para poner tamaños varibales o 'elasticos', dentro del navegador
+
+//lo que queremos en esta clase es que los elementos se apilen uno debajo del otro cuando la pantalla asi lo pida
+
+//esto lo hacemos con la propiedad flex-wrap este nos ayuda a que los elementos que tenian display flex sus hijos se  apilaran de forma vertical 'uno abajo del otro'
+
+//lo primero que hacemos en el style.css es que la clase container ya no va a tener un tamaño fijo, sera un tamaño fijo de 1000px
+
+max-width: 1000px
+
+//guardamos y vemos el cambio en el navegador
+
+
+//ahora queremos que no tenga scroll horizontal, que lo provocan esos elemenyos que son muy grandes, para eso usamos flex-wrap 
+
+//en la clase .header en stylos.css vemos que tiene display flex
+
+flex-wrap: wrap;
+
+//guardamos, vamos al navegador y vemos como funciona esta secccion cuando  se hace pequeña la pantalla
+
+//ahora hacemos lo mismo pero con la clase hero,  le damos el display de flex-wrap
+
+flex-wrap: wrap;
+
+//guardamos y vemos que el hero ahora contiene esa propiedad en pantallas pequeñas
+
+//ahora la clase .project y le decimos que  tenga flex-wrap
+
+flex-wrap: wrap;
+
+//guardamos y vemos que vayan callendo
+
+//hacemos lo mismo con la clase .contact
+flez-wrap: wrap
+
+//guardamos y vamos al navegador para probarlo
+
+//ahora en el footer
+flex-wrap:wrap;
+
+//guardamos y vemos que  funcione 
+
+
+
+
+6-vamos a comenzar a responsivear seccion por seccion
+
+Ajustando el header
+
+//lo primero es ir al index.html y comentar todas las secciones que no sean el header de moso que cuando lo  recarguemos  solo se vea el header
+
+//vamos al nvegador recargamos y lo vemos ahi solo el header, sacamos la consola y activamos show media queries
+
+
+//lo primero que vemos es que esta centrado, esto se debe al max-width  dentro de la clase .container,  y no queremos eso queremos que se vea bien  entonces podemos usar una opcion de un elemento con displayflex tenga el ancho maximo posible podemos usar la propiedad
+
+flex: 1;
+
+//asi toma el tamaño de su maximo ancho dentro del elemento
+
+//guardamos y vemos en el navegador para ver el header bien ubicado
+
+//ahora trabajemos con las vistas mas pequeñas, desde inferiores a 768 nuestro menu ya no se aprecia
+
+//entonces hasta el ipad vamos a hacer que nuestro menu se vea bien con lo que ya hicimos y luego que baje de ese tamaño de pantalla el menu se ponga en la parte inferior
+
+//esto lo hacemos con los media queries, bien dijimos que hcuando no sea ipad osea hasta ipad se vea asi, y el ipad tiene 768 px entonces aplicamos el media querie de 768  y lo modificamos un pixel menos es decir 767
+
+//esto quiere decir que resoluciones mas bajitas del ipad van a tomar esto
+
+@media screen and (max-width: 767px) {
+
+	//que modifique el header
+	.header {
+
+		display: block; // este es el display que tenia inicialmente, 	'
+
+		//ahora quitemos al elemento la propiedad height que tiene para que salga en la navbar , usamos. 
+		height: auto; //auto quiere decir que sea automatico, por defecto.
+
+		//gardamos y vemos en el navegador la resolucion desde 767 hacia abajo, y cvemos eso de la manera que queremos
+
+		}
+
+
+
+		//ahora centremos lo que tenemos dentro de cada elemento, 
+
+			.header ol {
+
+		//primero el menu hagamos que cada elemento ya no este al costado sino abajo del otro
+		//le ponemos display block, o initial al .header  ol ' que es la propiedad que contiene este menu'
+
+			display: initial;
+		//guardamos y vamos a ver que funcione en el navegador
+
+		}
+
+		//ahora tomemos cada uno de esos elementos li y vamos a darle tamaño y centrarlo
+
+		.header ol li {
+
+		  height: 50px;
+		}
+
+		.header a {
+			justify-content: center;
+		}
+
+		//guardamos y vamos al navegador y ver que se centro el menu
+
+		//ahora vamos a centrar tambien esa imagen
+
+		.header .logo {
+		text-align: center; //esta propiedad tamben sirve para centrar imagenes
+		}
+	
+}
+
+//guardamos y vamos al navegador a ver todas las resoluciones disponibles
+
+
+
+7- Ajustando nuestro portafolio
+
+en esta clase vamos a hacer responsive nuestra seccion de  project
+
+comentamos todo menos el header y la seccion portfolio
+
+//lo primero es hacer que este elemento no tenga un tamaño fijo y responda al tamaño del contenedor
+
+//la clase .project que esta heredando de la parte del .contenedor dentro de .portfolio, esta clase .project  y  project-imageContainer ambos tienen un tamaño fijo  y como no pueden estar dentro de un contenedor que tiene 1000px no pueden tenermas de eso 
+
+//y ambos elemento tienen 500px y 500px;
+
+//hagamos que ya no tengan los tamaños fijos estos dos elementos, le ponemos 50% para que cada uno tenga la mitad
+
+//vamos a style.css en la clase .project-details y  project-imageConatiner = width 50%
+
+//guardamos y en el navegador salen las imagenes de projects una alado de otra
+
+//pero en algun momento ya no vamos a querer que tenga ese tamaño cuando  se haga pequeña la pantalla
+
+//vamos a hacerlo en ipad que esta un px mas abajo este media querie
+
+.project {
+	display: block
+}
+
+// recargamos y vemos que funcione
+
+//ahora ajustemos el ancho de cada uno de ellos
+
+.project-imageContainer {
+	width: auto;
+	text-align: center;
+}
+
+.project-details {
+	width: auto
+}
+
+
+//siempre va a ser mejor que tengamos las cosas en display block y el ancho automatico porque nos da mucho mas rendimiento al navegador
+
+///grabamos y vamos al navegador para ver
+
+
+//ahora fuera del media queri vamos a buscar la clase .project-imageContainer  y abajo de este agregamos una nuesta propiedad para la imagen
+
+.project-imageContainer  img {
+	//y aqui hacemos las imagenes responsive
+
+	max-width: 100%;
+}
+//guardamos y vamos al navegador y vemos que funcione nuestra imagen responsive, viendo que haga resize en las resoluciones mas pequeñas
+
+//ahora vamos a cambiar el tamaño de los textos en esos project
+vamos a aplicar estas medidas relativas de nuevo en el mediaquerie de ipad
+ en el 
+ .project-details {
+   font-size: 16px;
+   }
+
+//pero tenemos mas textos con otras clases vamos a hacerle a todas lo mismo usando em
+
+.project-title {
+	font-size: 1.5em ; 
+}
+.project-course {
+	font-size: 7em;
+}
+.project-url {
+	font-size: 1em;
+}
+.project-date {
+	font-size: 1em;
+}
+.project-description {
+	font-size: .8em;
+}
+
+//guardamos y recargamos para ver en el navegador
+
+//ahora tomemos  .project-details de este querie y llevemolo al mediaquerie de pantalla mas pequeña 
+//para esto nos copiamos project-details de el media querie de 767 y en el de 480 bajamos el tamaño de fuente 
+
+
+.project-details {
+   font-size: 12px;
+   }
+
+   //guardamos y vemos los cambios en el navegador y asi vemos que solo cambiamos el tamaño de fuente del padre y os hijos seguiran con las propiedades que le pusimos hasta el tamaño de 767
+
+   //ahora vamos a solucionar algunos margenes  de estos project
+
+   .project-course, .project-date, .project-url, projec {
+   	 margin: .4em 0;
+   }
+
+   //guardamos y ya tenemos menos tamaño de margen hacia arriba  y hacia abajo
+
+   //revisamos el navegador
+
+
+   //ahora al titulo vamos a modificar ese margin-botton que tiene de 10 px
+
+   en el  .project-title le agregamos margin-bottom: .3em;
+
+   guardamos y vemos como se ve
+
+
+
+8-Ajustando la sección de eventos
+
+vamos a ajustar la seccion de los eventos primero tenemos que descomentarla tambien el div con el h2
+guardamos y vamos a verlo en el navegador
+
+//queremos que nuestros eventos tsmbien tengan un tamaño variable
+
+//vamos a buscar .event en style.css y ahi vamos a cambiar el ancho fijo por un width: 48%; y su margen que sea margin 1%;
+
+//guardamos y recargamos para ver que el elemento se vaya adaptando
+
+//ahora que hagamos que en la resolucion de 767 el width sea auto 
+
+.event {
+	width: auto;
+	//guardamos y vemos el navegador 
+
+	//ahora vamos a reseter el flex-shrink del elemento para que el titulo de cada evento y texto se acomoden
+	flex-shrink: initial;
+
+}
+
+
+	//ahora queremos que se vea completamente la imagen en el espacio
+	//buscamos la clase .event que contiene img y le ponemos un ancho que ocupe el 100% de su espacio 
+
+	.event img {
+		width:100%; 
+	}
+	
+
+	//guardamos y vamos al navegador para ver que salga bien en las resoluciones
+
+	//ahora queremos  en pantallas mas pequeñas cambiarle el margen a la clase event.detail, esto en la media querie de 489
+
+	.event-detail {
+		margin: -2em .5em .5em;
+		padding: 1em;
+	}
+
+
+//guardamos y vamos al navegador y vemos como cambio
+
+
+
+
+9-Ajustando la sección de contacto y footer
+
+//Es hora de trabajar sobre la sección de contacto y el footer de tu proyecto, por lo que en esta clase aprenderás a modificar ambas secciones.
+
+//para esto primero vamos a descomentar las seccion de contacto y el footer de index.html
+
+//primero vamos a hacer dinamico el alto  a  .contact cuando estemos en 480px
+
+
+.contact {
+	height: auto;
+	//guardamos y recargamos
+
+	//le ponemos padding
+	padding: 1em 0;
+
+	//reseteamos el display
+	display:block;
+
+	//centramos los items 
+	text-align: center;
+	//guardamos y recargamos
+}
+
+//nos falta el boton, que no esta centrado porque no tiene margin
+ .form-email button {
+ 	margin: 1em auto;
+ }
+
+ //quitemos el margin top al h3 de .contact
+
+ .form-email h3 {
+ 	margin-top: 0;
+ }
+
+ //pasemos al footer, que tiene display flex, como estamos en 480, reseteemos el display
+
+ .footer {
+ 	display:block;
+ 	text-align: center;
+
+ 	//guardamos y recargamos, y vemos algo como margin collapsin, 
+
+ 	//para arreglarlo podemos usar un padding de 1px o un borde de 1px y se arregla, pero algo diferente, usaremos el valor de transparente
+
+ 	border: 1px solid transparent;
+ }
+
+ //guardamos y vemos todas las resoluciones, 
+
+ //en pantallas grandes como modo responsive no nos gusta el padding que no tiene  el .container hay que agregarle  un poco de padding asi todos los elementos con la clase .container van a tener ese padding
+
+
+ //vamos a hacerlo en el media querie de 1024
+
+ .container {
+ 	padding: 0 1em;
+ }
+
+ //guardamos y recargamos para ver como funciona
+
+
+
+
+10- CSS positions
+
+//En tu proyecto, al probarlo en distintos dispositivos, te darás cuenta de que no solamente sus elementos y contenidos deben tener la propiedad de cambiar sus tamaños y condiciones para hacerse elementos de una buena visualización; sino que, además, hay unos ciertos contenidos que permanecen constantemente en el espacio de visualización, a pesar de que tu usuario realice scroll en la página.
+
+//esto se puede logras usando positions, vamos a aprende r usando codepen.io y luego en clases posteriores le aplicaremos positions a nuestro proyecto
+
+//este concepto puede aplicarse a todo css no solo responsive design
+
+//para comenzar desde codepen vamos a crera cuatro secciones,  estas tendran una altura de 200px un background lightgray un margin de 10px 0; y un borde de 1px solid rojo
+
+<div class ="section"> 
+
+</div>
+
+
+<div class ="section"> 
+
+</div>
+
+
+<div class ="section"> 
+
+</div>
+
+
+<div class ="section"> 
+
+</div>
+
+.section {
+	height: 200px;
+	background: lightgray;
+	margin: 10px 0;
+	border: 1px solid red;
+}
+
+//ya con esto tendremos nuestras cuatro secciones
+
+//existen varios tipos de posiciones exite,  la posicion por defecto la cual todos los elementos vienen con esta posicion por defecto
+ 
+ | static | por defecto
+
+ //con las demas opciones se activan  las propiedades de top, right, bottom, left y z-index
+ 
+ | relative | = objeto que se mueve en base al lugar donde se encuentra originalmente
+
+ | absolute | = ek objeto se ubica de manera absoluta con el elemento mas cercano que tenga posicion relative o con el body
+
+ | fixed | = el elemento se muestra de manera fija en el viewport
+
+ | sticky | = el elemento se queda de manera fija una vez que aparece en pantall
+
+// por defecto todos los elementos tienen la posicion estatica, 
+
+//vamos a cambiar de posicion un elemento, para esto vamos a la primera seccion y agregamos lo siguiente
+
+<p>Hola <span>Mundo</span></p>
+
+//vemos que tenemos un pe y dentro de este p tenemos un span. entonces a este span le vamos a cambiar la position, hagamolo con este elemento,  en este ejemplo usaremos la posicion relative
+
+p {
+	font-size: 3em;
+}
+
+p span {
+	position: relative;
+}
+
+//por defecto vemos que no pasa nada, esto es porque cuando usamos una posicion que no sea static se nos desbloquean dos conjuntos de propiedades 
+
+| z-index |
+| top, right, bottom, lef | //sirven para mover nuestro elemento segun uerramos, segun la cordenada que le  indiquemos, 
+
+//para probar esto a  modo de ejemplo donde pusimos la posicion relative ahora hagamos que este elemento se mueva 10px en top
+
+top :10px
+
+//vemos que se movio 10px desde arriba , funcionara de la misma forma con las demas right, bottom, left
+
+//podemos  usar tambien las propiedades en menos, y pongamole un background azul para que se vea cual es el elemento
+
+right: -20px
+background: blue;
+
+//lo que pasa  con la posicion relativa es que el elemento en su estado original no pierde su espacio, todo el moviento que le otorguemos estara basado en el espacio que tiene  
+
+
+//ahora usemos absolute
+
+//cambiamos el elemento que tiene position relative por absolute
+
+//cuando el elemento tiene posicion absolute se sale completamente del espacio que tenia con relative, y se va a ubicar de manera absoluta y manera relativa con respecto al elemento mas cercano que tenga la posicion relativa o en su defecto con su ultimo elemento que puede ser body, html
+
+//vemos que al poner absolute se salio hasta el borde de el html porque como el elemento mas cercano ni ninguno de momento tiene relative entonces este se va por defecto con el ultimo elemento padre
+
+//pongamos ahi la  propiedad de reight en 0 para ver esto mas claro
+
+right: 0;
+
+
+//si queremos que se ponga en el borde de ese elemento section en dnde estamos trabajando tendriamos que ponerle una posicion relativa a esta clase section
+
+//en .section
+
+position: relative;
+
+//asi el span esta absoluto con repecto al section relative
+
+//ahora para ver mejor vamos a ponerle a p{}
+
+background: red;
+display: inline-block;
+
+// y vemos que tenemos en rojo una parte y al otro lado el mundo que pretence al span en el otro, pero y si queremos que mundo se posicione absolute con relacion al elemento p, tenemos que ponerle a este position relative
+
+position: relative
+
+// y ahi tenemos el mundo ubicado en ese lado
+
+
+//ahora vamos a poner esa parte de responsive design dentro de otra etiqueta span y le ponemos a ese elemento una clase 'responsive'
+
+//ahora en la parte de 
+
+p span {}
+
+//comentamos la posicion absolute
+
+//ambos elementos se estan superponiendo porque ambos estan en el  span
+
+//para mejorar esto le ponemos una clase al span de mundo 'mundo'
+
+//aqui es donde entra la propiedad de z index
+
+//agregamos en la parte del css 
+
+.mundo {
+	background: pink;
+}
+
+.responsive {
+	background: yellow;
+}
+
+//y quitemos el background azul de el p span {}, veremos que se ven diferente
+
+//pero como hacemos que mundo pase a estar encima de responsive, con la propiedad z-index, la ponemos en 
+
+.mundo{}
+z-index: 1; 
+
+//y vemos que se pone encima de responsive sobre el, esto sucede por defecto porque  un elemento en el html esta despues del otro y ambos tienen la misma ubicacion, entonces se superponen, si queremos cambiarlo esto es gracias a z-index
+
+
+//ahora pasemos a la position fixed 
+
+//vamos a hacer que nuestro p span ahora tenga la position fiexd 
+
+position: fixed;
+
+//como ya tiene el top 0 se va a posicionar arriba, cuando usamos esta posicion se va encima de todo
+
+//para ejemplo agreguemos un <p> en el html primera que cualquier linea
+
+//cuando lo vemos en el dom sale el fixed arriba y este parrafo abajo, y si hacemos scroll vertical el fixed nos va a seguir a donde vayamos, pues esta fija encima de todo y todos
+
+//le podemos poner que se fije mejor en el botton y en la derecha
+
+bottom: 0;
+right: 0;
+
+
+
+//ahora veamos la posicion sticky
+
+//esta sirve para hacer como fija alguna seccion en particular, es decir tenemos una seccion en el documento y cuando haciendo scroll llegamos a ella, nos va a perseguir 
+
+//vamos a cortar la seccion que tiene nuestros elementos  y la ponemos de segunda en el orden
+
+//le ponemos a esa seccion la clase de sticky y en el css le aadimos esa propiedad
+
+.sticky {
+	position: sticky;
+
+	//tambien tenemos que decirle con respecto a quien se va a pegar entonces le decimo 
+
+	top: 0;
+}
+
+//ahora hacemos scroll horizontal y  llegamos a esa seccion esta se queda fija desde arriba, para verlo mejor cambiemos el background de este sticky
+
+background: rgba (0,0,0,.5);
+
+//y hacemos scroll vertical y vemos bien como funciona
+
+
+
+
+11-Ajustando nuestra sección principal
+
+
+En esta clase aplicarás las herramientas que aprendiste la clase pasada sobre las posiciones de CSS.
+
+Para lograr esto trabajarás sobre la sección principal de tu proyecto; en ella modificarás la superposición de imágenes y textos, restablecerás dimensiones nuevamente (en especial para eliminar los movimientos o scroll horizontales de la página), en cuanto o la página en sí y sobre todos los contenidos que la componen y sus distancias respectivas.
+
+//primero descomentamos la seccion hero del html
+
+//vamos stylos y en el de 767 ponemos algunas modificaciones al hero
+
+.hero {
+	height: auto;
+}
+
+.hero-image {
+	//su posicion absolute en referencia a su elemento padre
+	position: absolute;
+	//z-index 1 aparece debajo
+	z-index:1;
+
+	//que vaya todo hacia todos lados
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+
+h1 {
+	font-size: 2em;
+	z-index: 2; //aparece encima del z-index 1
+}
+
+/guardamos y recargamos y vemos que el elemento con position absolute tomo todo el ancho llegando hqasta el html eso es porque su padre no tiene position relative y sigue subiendo hasta llegar al fin osea html
+
+//para repararlo en .hero 
+
+position: relative;
+
+//guardamos y recargamos y vemos varias resolucioness
+
+//ahora vamos a mover todo lo que acabamos de hace en el de767 al de 1024
+
+//guardamos y recargamos pero la imagen aun no se extira del todo, para lograrlo le ponemos un width de 100% en ese .hero-image
+
+//guardamos y recargamos y se ubica un poco mejor la imagen, pero se desborda , para repararlo, usamos la propiedad overflow 
+
+esto en el .hero 
+
+overflow: hidden;
+
+//esto evita que se desborde de la seccion en que ubicamos  el elemento
+
+//hagamos un poco mas de espacio sobre los textos
+
+//le decimos a nuestro hero que tenga padding arriba y abajo 
+
+en .hero 
+
+padding: 2em;
+
+//ahora esta fuente de el titulo no dsale bien en todas las resoluciiones vamos a 480 y  agreegamos
+
+h1 {
+	font-size: 1.5em;
+}
+
+//ahora en el de 320
+
+h1 {
+	font-size: 1.2em;
+}
+
+//en esta misma resolucion vamos a cambiar el padding a los costados 
+
+.hero {
+	padding: 2em 1em;
+}
+
+//podemos agregar mejor visualizacion al texto h1
+
+en el h1 
+
+//podemos usar  cualquiera de las tres siguientes
+
+background: rgba(0,0,0,.5)
+text-shadow: 1px 2px 2px #000;
+
+//esta le aplica un filtro a la imagen
+
+filter: opacity(80%) blur(1px);
+
+
+12-Videos HTML5
+
+Como sabes, los videos son contenidos cada vez más comunes e incluso necesarios en las web sites.
+
+Por esta razón, en esta clase aprenderás a incluir un video en tu proyecto y, por lo tanto, lo modificarás para convertirlo en un material responsivo, es decir, que sea coherente con tu trabajo de Responsive Design.
+
+Para aprender esto es necesario que elijas cualquier video que tengas en su formato original y sigas las indicaciones que tu profesor, Leonidas Esteban, realizará a lo largo de la clase.
+
+//insertemos este video en nuestor html esto debajo de la seccion portfolio
+
+<video  class ="html-video" src="https://www.youtube.com/watch?v=AKgmrku6KRc" width="1280" height="720" controls> </video>
+
+//guardamos y recargamos
+
+//ahora vamos a los estilos fuera de los media queries
+
+.html-video {
+	width: 100%;
+	height: auto;
+	/*max-width: 100%*/
+}
+
+//ahora tomemos el tag que hicimos del video y  lo vamos a poner en elguna de las imagenes de los eventos,
+
+escogemos uno y ahi comentamos la imagen y dejamos el video 
+
+
+
+12- Video insertado
+En esta clase aprenderás a implementar videos responsive en tu proyecto, originarios o alojados en otras plataformas (como youtube y/o vimeo). Por este motivo trabajarás con la etiqueta iframe.
+
+Ésta etiqueta hará posible que el video que insertes tenga la posibilidad de adaptarse a distintas formas de visualización, aunque, a pesar de ellas, aprenderás cuáles son las diferencias entre usar un video inserto y hacerlo desde html5.
+
+
+
+//ESTE es el codigo de  un video insertado
+
+//el tag <iframe> nos sirve para insertar cualquier cotenido de multimedia como videos, paginas web
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/AKgmrku6KRc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+agreguemos una clase llamada youtube-video a este tag para manipularlo desde css
+
+y fuera de los mediaqueries tambien
+
+.youtobe-video {
+	width 100%;
+	height: auto;
+
+}
+
+//ah diferencia de un video directamente en html 5, este video tiene un contenido de otra pagina, y lo ponemos en nuestra  pagina que es   otra pagina, y cual va ser tamaño segun la etiqueta iframe  y no el video que esta por detras, por ender tenemos que redimensionar el iframe
+
+//comentamos lo de .yotube-video  y vamos a empezar a acomodar este video, en primer lugar tenemos que saber el porcentaje de de video para saber bien la proporcion que tendra
+
+//esto lo hacemos con una regla de 3 
+
+alto * 100 /  ancho
+//en el video tenemos width 315 height 560 
+
+315 * 100 / 560 = 56,25 %
+
+//esto lo usamos como porcentaje para  aplicar un padding
+
+//vamos al html y creamos otro  un div  debajo del subtitulo que esta sobre la seccion de events. con una clase 'flexible' donde estabamos  colocando los videos esta bien
+
+<div class="flexible">
+
+//ahora en el css, fuera de los media queries porque respetamos el proceso desktop primero cuando es algo nuevo
+
+.flexible {
+	 width: 100%;
+	 height: 500px;
+	 background: blue;
+}
+
+//ahora queremos ponerle esa medida al video que tenemos insertado, osea queremos tener la proporcion de ese video pero aplicado a esa seccion que estamos haciendo
+
+
+//entonces  no podemos usar el height asi, pero podemos poner height en 0 y apoyandonos en el modelo de caja, pouedo utilizar por ejemplo un padding-top que sea igual al calculo que hicimos
+
+height: 0;
+padding-top: 56,25%
+
+//guardamos y recargamos, tenemos este contenedor del video se responsivea
+
+//algo a tener en cuenta es que el tamaño del porcentaje se calcula con respecto al ancho entonces el alto que le estamos dando es el 56.25% del ancho
+
+//ahora hagamos que el video se estire completamente en la pagina y luego lo metemos en la caja que hicimos
+
+.youtobe-video {
+	position: absolute;
+	top:0;
+	bottom:0;
+	right:0;
+	left:0;
+	width: 100%;
+	height: 100%
+}  
+
+//cuando recargamos el video se fue arriba como era de esperarse porque  no tiene de momento un padre con position  relative, 
+
+//otra cosa es que el video sale arriba y el .hero sale sobre el, esto se debe a z-index,   recordemos que van por orden  1, 2 3, asi el mas alto  si hay dos haciendo conflicto es el que aparece encima, por ende para repara esto podemos poner z-index: 3 al video y ya, pero como no vamos a dejar el video ahi entonces no es necesario hacerlo
+
+
+//ahora vamos a ubicarlo dentro del div que pusimos para el contenedor del video en el html
+
+div class="flexible"
+	iframe....
+/div
+
+//guardamos y no pasa nada porque recordemos posiciones absolute dependen de un padre que contenga relative, vamos a ponerle esa position a este elemento que contiene el video, es decir la clase .flexible
+
+position: absolute;
+
+//guardamos y vemos que tenemos ese video responsive, 
+
+//ahora vamos a ubicarlo dentro d ealguno de estos eventos, como el otro video
+
+//guardamos y recargamos, si pusimos z-index al video  quitemolo para ver que pasa
+
+ya se ve responsive y bello dentor del evento
+
+//mas info para videos verticales, tendriamos un asi ya que el alto seria mayor que el width en un video vertical
+h * 100 / width
+560 * 100 / 315  = 177,7%
+
+
+
+13-Fuentes de iconos
+
+Todo menú necesita de la presencia de iconos, por este motivo, en esta clase aprenderás sobre las fuentes de iconos y las aplicarás en la realización del menú de tu proyecto.
+
+En este abordaje a las fuentes de iconos, conocerás la plataforma icomoon.io, en ella podrás importar o añadir familias de iconos, desde tu computador o desde el sistema.
+
+//vamos a iconmoon creamos una cuenta, descargamos el icono que necesitamos, eso nos da un archivo .zip  necesitamos la caperta fonts, y el style.css que este trae
+
+//entonces la carpeta fonts la descomprime y guarda en el proyecto
+
+//luego el archivo style.css lo abre con el editor este contiene las fuentes y eso
+
+//copia ese css y lo pega en nuestro style.css en el inicio antes del body
+
+//ahora tenemos que agregar la clase que nos otorga style.css que trae  la ultima linea del icono 
+
+.icon-menu:before {
+  content: "\e9bd";
+}
+
+//esta clase
+
+//ahora agregamos el icono en el html, arriba del header como ejempo para verlo
+
+<i class="icon-menu"></i> 
+
+
+//tenemos el reto de  descargar los iconos que usamos en .contacto y descargarlos desde iconmoon
+
+
+
+
+14-Añadiendo un menú de hamburguesa
+
+En esta clase convertirás el ícono que has elegido según las fuentes de íconos y le destinarás una función, es decir, le adjudicarás un “call to action” o llamado a la acción. Así, tu usuario sabrá cómo relacionar el ícono a la función que necesita realizar. En conclusión, durante la clase, Leonidas te enseñará diversas técnicas para desarrollar tu menú de hamburguesa o menú desplegable de múltiples opciones, en la página web que estas desarrollando, en estas formas trabajarás sobre las medidas, los colores, el background color, el borde, el display y, algo fundamental, las posiciones de css que ya aprendiste en la clase correspondiente a este tema.
+
+//para comernzar vamos a darle una nueva clase a nuestro elemento menu en index.html 'burger-button'
+
+//luego en style.css le damos propiedades, esto fuera de los mediaqueries
+
+.burger-button {
+	width: 40px;
+	height:40px;
+
+	//50% de ese elemento de hancho es decir 50% de 40px
+	border-radius: 50%;
+	background-color: red;
+
+	//guardamos y recargamos
+
+	//cambiamos el tipo de  display para que tome ese alto y ancho, por defecto lo trae en inline
+
+	display: block;
+
+	//guardamos y recargamos, sale pero el elemento debe ser centrado.
+
+	//para centrarlo, podemos usar display flex, pero para esta clase usamos line-height
+
+	line-height: 40px; //asi de manera vertical 
+
+	//guardamos y recargamos
+
+	//ahora para vertical usamos tex-align
+
+	text-align: center;
+	//guardamos recargamos y ya esta en el centro
+
+	//vamos a darle posicion a ese elemento
+	position: fixed;
+
+	//pero vemos que no sale tan bien cuando hacemos scroll, recordemos esto se debe al z-index
+
+	z-index: 4;
+
+	//g y c
+
+	//vamos a darle un poco de movimiento hacia la derecha y hacia abajo
+	left: 5px;
+	top: 5px;
+
+
+	//ahora vamos a cambiar el color fe la fuente
+	color: white; 
+
+	//y modificamos el color de fondo que le habiamos dado de rojo a  rgba(0, 0, 0, .8)
+
+	rgba(rojo, verde, azul, opacidad)
+
+	rgba(0, 0, 0, .8) //este color tiene  ausencia de los tres colores que componen  y una opacidad de 80%
+
+	//guardamos y recargamos
+
+	//ahora este elemento solo se ve desde pantallas menores a 767 para esto le ponemos el display en none
+
+
+}
+
+
+//ahora el burger-button  para que cumpla la condicion lo agregamos al querie de 767
+
+.burger-button {
+	display: block;
+}
+
+
+
+15-Posicionando el menú
+
+Antes de que tu menú tenga elementos que permitan la interactividad, es necesario definir sus posiciones y ordenamientos desde tu editor de código. En esta clase definirás los tamaños de tu menú, de los textos y, especialmente, trabajarás sobre sus estilos. Estos estilos los irás comprobando en distintas opciones de visualización o tamaños de dispositivos, con el propósito de estar realizando un trabajo efectivo en cuanto al responsive design. No obstante, al finalizar verás que aun no tiene la posibilidad de aparecer y esconderse, según lo necesite tu usuario, por este motivo: te invitamos a ver la próxima clase en donde usarás elementos de javascript para brindarle otra experiencia, mucho más completa, a tus usuarios.
+
+//vamos a style.css y le damos estilos diferentes al menu cuando este en 767
+
+.menu {
+	position: fixed;
+	//g y c
+
+	background: red;
+
+	//z-index qur lo haga aparecer debajo del burguer-button 
+
+	z-index: 3
+
+	//g y c
+
+	//hagamos que se acomode tras el boton del menu
+
+	top: 0; 
+
+	left: 0;
+
+	//vamos a darle un ancho usando las medidas vw hw
+
+	width: 100vw; //con esto tendriamos el 100% del ancho del viewport
+
+	//g y c
+
+	//hacemos lo mismo con el alto
+	height: 100vh;
+
+	//g y c
+
+	//ahora centremos nuestros elementos ahi dentro
+
+	display: flex; 
+	align-items: centeR;
+	justify-content: center;
+
+	//g y c y no sale bien podemos usar un height : auto;  en el tag ol y se acomoda pero usaremos positions, vamos a ponerle  bottom 0, y comentamos la linea de height en este estilo
+
+	bottom: 0;
+
+	//g y c y vemos que se centro porque, explicitamente no estamos utilizando la propiedad de height dentro del elemento padre,  asi que ese elemento el tag ol hereda nada un height de auto
+
+	//comentamos el color que tenemos de fondo  y pongamos otro valor #056fff:
+
+	//g y c
+
+	//sale azul pero queremos ponerle transpareencia
+
+	//para esto copiamos el color en rgb que nos omuestra la consola cuando revisamos ese background que le dimos, ya con este color remplazamos el background que acabamos de poner con este rgb y le añadimos a para que sea rgba  y pueda tener opacidad
+
+	rgba(5, 111, 255, .9); 
+
+	//g y c para ver el color con transparencia
+
+}
+
+//ahora vamos a los estilos de .header a y demos estilos a esos enlaces
+
+height: 40px;
+font-size: 2em;
+text-decoration: undeline;
+margin-bottom: .5em;
+
+//g y c y vemos que salga responsive
+
+//ahora volvemos a los estilos en .menu, este por defecto va a estar oculto, vamos a ocultarlo hacia la izquierda
+
+//para hacer esto tenemos que cambiar la propiedad left y le ponemos
+
+left: -100vw; //que se esconda hacia la izquierda  un 100% del width
+
+//ahora  al tag  que contiene la clase menu en html agreguemos otra clase, 
+'is active'
+
+//vamos a crearla bajo el .menu en istyle.css
+
+.menu.is-acttive { //poner dos clases sin espacio quiere decir, los elementos que tengan esas dos clases
+
+	left: 0;
+}
+
+//g y c y probamos desde consola ponerle la clase is active al elemento del menu para ver que si sale cuando esta clase esta activa
+
+
+//ahora agreguemos una pequeña trancision a este menu cuando sale, esto en la clase .menu en style.css
+
+//g y c, agregamos la clase is active al menu desde consola para que vea cuando sale con la animacion
+tramsition: .3s;
+
+
+
+
+16-Añadiendo Javascript para detección de eventos
+
+
+La interactividad que necesitarás para tu menú, se concentrará en algunas acciones, la primera de ellas es la que sucede al cliquear sobre el botón o el icono.
+
+Para lograr esto harás uso del lenguaje de programación JavaScript
+
+Algunas de las instrucciones de JS que aplicarás serán, console.log, document.querySelector, classList, variables (const nombre =), burgerButton, EventListener, entre otras.
+
+//primero  al tag i que contiene el iciono de menu vamos a ponerle un id 'menu-button'
+//ahora luego del footer y antes de cerrar body abbrimos una etiqueta style y vamos a dalr un evento de clic al boton del menu
+
+//primero creemo una variable llamada menu y ahi le pasamos un querySelector que obtenga la clase .menu
+
+const menu = document.querySelectro('.menu');
+console.log(menu);
+
+//creamos una variable para pasarle el id del boton menu este lo obtenemos atravez de un querySelector
+
+const bugerButton = document.querySelectro('#burgerButton');
+console.log(burgerButton);
+
+//ahora que y tenemos el id que representa al boton, vamos a darle a escuchar un evento, y que pase algo cuando este evento suceda, en esta linea le decimos que cuando hagan click llame a la funcion hideShow
+
+burgerButton.addEvenListemer('click', hideShow);
+
+//creamos esa funcion que contiene lo que pasa cuando suceda ese evento
+
+function hideShow () {
+	
+	//hacemos un if, este pregunta tiene el menu la clase active en true, si la tiene entonces quitela, si no pongala
+
+	menu.classList.contains('is-active') ? menu.classList.remove('is-active') : menu.classList.add('is-active');
+}
+
+
+//por ultimo al menu le agregamos un evento de click para que cuando le demos click a un enlace del menu nos lleve ahi y se cierre este menu
+
+menu.addEventListener('click', () => menu.classList.remove('is-active'));
+
+
+
+
+17-Media queries con JavaScript
+
+En esta clase aprenderás a implementar media queries con JavaScript, para esto usarás instrucciones como window.matchMedia, console.log -nuevamente-, event, entre otros.
+
+El propósito es que tu menú quede listo para ofrecer una experiencia interactiva y sea flexible en distintos dispositivos, es decir, que sea interactivo y responsivo.
+
+//osea que este optimizado y los eventos solo se activem y desactiven en el momento que deben hacerlo, es decir en las pantallas que si van a ser usados
+
+//hagamos que estos eventos solo se escuchen en pantallas inferiores a 767
+
+//para esto son los mediaqueries dentro de js
+
+//hagamos un mediaquerie en js asi que vamos a el tag script dond eestabamos y  llamemos un metodo aplicado a window
+
+window.matcMedia('screen and (max-width: 767px');
+//recibe una consulta a los medios como por ejemplo un mediaquerie de 767
+
+//hacemos console.log para ver que tiene 
+
+console.log(window.matcMedia('screen and (max-width: 767px'));
+
+//guardamos y vemos que contiene en la consola, vemos que nos devuelve un objeto
+
+//matches: es igual a si cumplio o no la condicion
+
+//hagamos la ventana responsive y recarguemos para ver que el matches àsa a true osea funciona el media querie
+
+//ahora vamos a poner esta media querie dentro de una variable llamada ipad
+
+const ipad = window.matcMedia('screen and (max-width: 767px');
+
+//luego de eso, tenemos que escuchar los cambios que hay dentro d eese media querie
+
+//esto lo podemos hacer con un meotod funcion que tiene ahora la variable ipad llamada addListener 
+
+//esta es una funcion que contiene el llamado a otra funcion que se activa o se desactiva cuando  matches de el querie que contiene alterado, ya sea true o false
+
+ipad.addListener(validation)//que llame a una funcion llamada validation
+
+//la creamos mas abajo, le pasamos un evento que viene siendo nuestro mediaquerie
+
+function validation(event) {
+	//console.log(event.matches);
+
+	//guardamos y recargamos y jugamos con el responsive para ver como se activa este elemento y el log que hicimos, es un oobjeto y podemos ver que el matches esta en true, asi podemos validar si  esta en verdadero o falso
+
+	//ahora hagamos un if que condicione si el evento viene en true o false, para que el evento de click que tenemos se mande o no se mande
+
+	//para eto hacemos un condicional
+	if(event.matches) {
+
+		//cortamos y pegamos, la declaracion del evento, de esta forma si se cumplio o sea si esta en true el  767 entonces se activa el evento que escucha por click en el menu
+
+		burgerButton.addEvenListemer('click', hideShow);
+	
+	//gusrdamos recaegamos y vemos que todo funcione
+	}
+
+	//necesitamos revertir la situacion, quitar la escucha del evento cuando no sea necesario, esto optimiza mas
+
+	else {
+	//quitemos esos eventos escuchantes si no se cumpple la condicion
+
+	burgerButton.removeEventListemer('click', hideShow);
+
+	//gusrdamos y recargamos para ver que funcione, vamos a la pestaña event listeners de la consola para ver los eventos que se activan o desactivan a medida que hacemos responsive
+
+
+
+
+	}
+}
+
+
+//ahora vamos a repara un bug que hay y es que la funcion validation solo se ejecuta si hay un resize de pantalla, necesitamos que se ejecute tambien una vez entonces lo llamamos aqui 
+
+le pasamos ipad ya que este contiene el mediaquerie al que le aplica el evento
+
+validation(ipad);
+
+
+
+
+17-Creando un servidor de archivos estáticos con Node
+
+En esta clase verás qué diferencias hay entre el navegador y la visualización del teléfono, a lo que se le conoce como remote debugging y de lo que aprenderás más adelante.
+
+Por ahora, aprenderás a realizar un servidor de archivos estáticos con Node, esto te permitirá contar con las herramientas necesarias para trabajar sobre el remote debugging en distintos dispositivos. Así que, en primer lugar vas a descargar el software de Node, que te permitirá crear los archivos estáticos.
+
+//con node y npm ya instalados 
+
+//instalamos el siguiente package de manera global, tenemos que abrir la consola como administrador
+
+npm i -g stastic-server
+
+//ahora navegamos a la carpeta del pryecto
+
+//ya en nuestra caperta solo tenemos que usar el comando
+
+static-server
+
+//con esto se prende el servidor de archivos estaticos
+
+ //entramos a la ruta que nos proporciona y vemos que tenemos nuestro proyecto
+
+
+ //ahora queremos ver esa pagina de localhost desde nuestro telefono, para esto necesitamos saber la ip a la que estamos conectados
+
+ ip config
+
+ 192.168.1.30
+//ahora la pegamos en el navegador asi 
+
+192.168.1.30:9080
+
+//vemos que salio igual
+
+//ahora entremos a esa direccion desde el telefono y tenemos que ver nuestro website
+
+
+
+
+18-Remote Debugging en Android y puliendo últimos detalles
+
+
+en la de 1024 le pusimos padding 0; al .portfolio
+
+
+Así como aprendiste a configurar el remote debugging para iOS, en esta clase aprenderás a configurarlo para dispositivos Android. Para aprender a hacerlo, debes tener conectado tu teléfono a tu computador vía usb y activar el menú de desarrollador -el cual se encuentra en la configuración-; al activarlo debe aparecer un menú adicional desde el cual podrás utilizar el inspector de elementos en tu computador, desde el explorador que tengas (que para esta ocasión será Google Chrome). Desde este lugar podrás modificar los diversos elementos de tu proyecto, aplicando las herramientas y conocimientos que ya dominas hasta el momento. Por último, ¡pulirás los detalles finales de tu proyecto!
+
+
+//enn chrome buscamos chrome://inspec ahi encontramos un menu y nos sale nuestra conexion, le damos a inspect y nos abre una nueva ventana ñuego entramos a la pestaña de chrome desde nuestro celular  donde tenemos a conexion y vemos la magia en nuestro pc en la ventana que se abrio nueva
+
+
+//tenemos ese texto que se ve pequeño en los projectos  
+ 
+
+ //en el de 480 en  .project-details 
+
+ font-size: 14px;
+
+
+ //ahora en el parrafo de la descripcion, 
+ese esta en .proyect-description de el 767
+
+font-size: .1em;
+
+//ahora en el mismo media querie modifiquemos los h2 
+
+h2 {
+	font-size: 1.2em;
+
+	margin: .7em 0;
+}
+
+
+//ahora en el breakpoint de 1024 vamos a quitarle el margen a la izquierda que le quedo a este elemento
+
+.event-list-title {
+	margin-left: 0;
+
+	//g y c
+}
+
+//dejamos de depurar en esa ventana y vamos al localhost de la conexion
+
+
+//revisamos cada breackpoint en el navegador y buscamos cosas que arreglar
+
+//en el breakpoint  de 480, modificamos el espacio de los social
+
+
+.social-link {
+	width: 40px;
+	height: 40px;
+	background-size: 100%;
+}
+
+//guardamos y vemos que se vea bien en la de 320 y el resto
+
+
+//ahora en el breakpoint de 1024, lo bajamos a 1023, porque nuestro primer mediaqueri comienza ahi
