@@ -92,7 +92,7 @@ ahora verifiquemos un efecto dentro de nuestro website en el isnpector, nos pnem
 
 vemos como es que se carga la pagina  y vemos que uestra pagina ahora se renderiza con el contenido visible y luego si carga la fuente y despues el css
 
-ahora unos cambios prudentes que nos faltan pueden ser ponerle al h1 un max-width de 500% en el css, tambien cambiemos el tipo de fuente que carga por defecto antes que cargue la que traemos de googlefonts usemos la propiedad system-ui, para esto seleccionamos todos los llamados a sans-serif y los remplazamos por system-ui 
+ahora unos cambios prudentes que nos faltan pueden ser ponerle al h1 un max-width de 500px en el css, tambien cambiemos el tipo de fuente que carga por defecto antes que cargue la que traemos de googlefonts usemos la propiedad system-ui, para esto seleccionamos todos los llamados a sans-serif y los remplazamos por system-ui 
 
 guardamos y mandemos eso a hacer deploy
 git status

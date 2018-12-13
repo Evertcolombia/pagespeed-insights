@@ -44,12 +44,12 @@
 
 
 body {
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Sans Pro', system-ui;
     margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Fjalla One' sans-serif;
+    font-family: 'Fjalla One' system-ui;
     font-weight: normal;
 
 }
@@ -60,6 +60,7 @@ h1 {
     letter-spacing: -.2px;/*espacio entre letras, el ma soptimo y recomendado -.2px*/
     color: white;
   margin: 0;
+    max-width: 500px;
 
 }
 
@@ -70,7 +71,7 @@ h1 strong {
 h2 {
   color: #026fff;
   text-transform: uppercase;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Source Sans Pro', system-ui;
   font-weight: bold;
   font-size: 24px;
   margin-bottom: 40px;
@@ -118,7 +119,7 @@ h2 {
 }
 
 .project strong {
-  font-family: 'Fjalla One' sans-serif; 
+  font-family: 'Fjalla One' system-ui; 
 }
 
 .project-title {
@@ -315,7 +316,7 @@ figure {
 }
 
 .form-email h3 {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Source Sans Pro', system-ui;
 }
 
 .container {
