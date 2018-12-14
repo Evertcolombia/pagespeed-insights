@@ -185,3 +185,59 @@ recargamos la pagina hasta ver que todo va bien
 y ahora pasamos por el pagespeed insights
 
 y ya no sale el bloqueo de css , es un avance pero faltan cosas que haremos en nuestra proxima clase
+
+
+
+6-Optimizando Imágenes
+
+Para tener nuestro sitio totalmente optimizado solamente nos queda optimizar nuestras imágenes.
+Algunas veces estaremos renderizando una imagen con un tamaño mucho mayor del que tenemos en el sitio, por ello es buena práctica redimensionar nuestras imágenes al tamaño que mostramos en nuestro sitio, usaremos el servicio de ResizeImage.
+No basta solamente con redimensionar nuestras imágenes, también debemos comprimirlas y de preferencia tenerlas en formato PNG para evitar perdidas en la calidad de imagen, para esto usaremos el servicio Tiny PNG.
+
+como ejercicio revisemos desde la consola  en el navegador las dimensiones de nuestras imagenes para compara sus tamaños en la pagina a sus tamaños reales
+
+lugo vamos  usar entnces la herramienta  REsizeImage
+
+https://resizeimage.net/
+
+vamos a cambiar los formatos a png de as imagenes, ya que en la teoria nos dice que un formato de png y un formato de gif son formatos de perdida de calidad en su compresion, entonces usaremos este consejo
+
+entonces en ResizeImage seleccionemos la imagen de hero.jpg de nuestro proyecto y lo primero que hacemos es pasarla a png en la opcopn 'select the output image format'
+
+agreguemos la proporcion a la cual queremos redimensionar esa imagen en la opciopn 'Crop your image' esa opcion nos permite seleccionar solo una parte de esta imagen, entonces en esta opcion seleccionamos
+
+fixed aspect ratio 
+
+luego elegimos la proporcion que queremos seguir 500 * 300 
+
+siguiente es poner u na selecion de area  W: 500 H: 300 y nos sale el cuadro de seleccion, este aparece pequeño en comparacion al tamaño natural de la imagen
+
+entonces escalemos esa seleccion a donde la imagen nos guste si queremos  o podemos escalarla toda si es necesario
+
+entonces le damos click en crop
+
+ahi se recorta la imagen y se redimensiona
+
+ahora hacemos un redimensionamiento a que sea 500 * 300 que es el espacio que tiene en el index.html esto en la opcion  'Rezise your image' y que este seleccionada keep aspect radio
+
+luego de esto  en la opcion 'optimize your image' le damos click en resize Image
+
+luego de unos segundos podemos verla sercargarla y mas, vamos a descargarla
+ 
+
+ ahora esta imagen la vamos a comprimir porque puede tener un mejor peso
+
+ entonces vamos a tiniPng 
+ https://tinypng.com/
+ y en este sitio web arrastramos la imagen que acabamos de descargar, esto porque tinypng tiene un buen algoritmo de compression
+
+ luego de esto descargamos esa imagen, vamos a las descargas y mandamos esa imagen al area de images en nuestro proyecto
+
+
+ ahora dupliquemos esa carpeta images  y le ponemos originals entonces tenemos imagenes y originals
+
+ originals contiene las imagenes originales entonces de esta carpeta eliminamos la imagen nueva la de la redimension
+
+ y de images eliminamos el hero.jpg porque usaremos la nueva imagen y la renombramos 'hero.png'
+
+ ahora vamos a index.html y cambiamos el llamado a esta imagen para que se cargue la nueva
