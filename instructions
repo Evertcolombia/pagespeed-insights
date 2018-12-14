@@ -114,3 +114,19 @@ Algo que podemos hacer  particularmente con las fuentes cuando las cargo por med
     });
   </script>`````
 Y al igual que como lo menciona @LeonidasEsteban se coloca después del footer y no antes. 
+
+
+
+4-Comprimiendo Hojas de estilo
+
+Continuando con nuestra optimización en esta clase vamos a comprimir nuestra hoja de estilos. Esto se puede hacer de muchas maneras, ya sea utilizando preprocesadores como Sass, Less o Stylus, o también puedes utilizar Webpack, para fines de este curso haremos uso del sitio CSS Compressor.
+
+https://csscompressor.com/
+
+copiamos el codigo en style.css  y lo pegamos ahi en ese sitio web y lo comprimimos, copiamos ese codigo comprimido y lo pegamos en un nuevo archivo en nuestro documento
+
+style.min.css
+ y ya vemos el codigo minificado y este archivo que lee nuestro index.html
+
+
+  vamos a index.html y en el lugar que teniamos el llamado a style.css lo remplazamos por nuestro archivo minificado y lo posicionamos para que se  lea primero la hoja de estilos luego el js y luego la fuente
