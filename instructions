@@ -130,3 +130,58 @@ style.min.css
 
 
   vamos a index.html y en el lugar que teniamos el llamado a style.css lo remplazamos por nuestro archivo minificado y lo posicionamos para que se  lea primero la hoja de estilos luego el js y luego la fuente
+
+  ahora git status
+  git add -A
+  git commit -m 'minify css'
+  git push origin master
+
+  vamos y recargamos nuestro sitio comprobamos que hicimos bien las cosas
+
+  y vamos a pagespeed insights para analizar de nuevo
+
+
+
+5-Critical CSS o Critical Path CSS
+
+Para eliminar el bloqueo de la visualización solamente nos queda hacer Critical Path CSS.
+
+Al momento de cargar un sitio este se encontrará sin estilos hasta el momento de cargar el CSS por completo generando que la visualización del sitio sea mala, para solucionar esto solamente debemos escribir el CSS necesario para el Above the fold dentro de nuestro HTML. Haremos uso del sitio Critical Path CSS Generator.
+
+https://jonassebastianohlsson.com/criticalpathcssgenerator/
+
+un ejemplo es que hasta este momento nuestr apagina esta cargando en blanco hasta que llegan los estilos y recien se cargan y le pone estilos a la pagina
+esto es mala uX para el usuario
+
+esto quiere decir que aun seguimos bloqueando el renderizado de estilos a nuestra pagina
+
+sin embargo  cuando le pongamos formas en el primer pantallazo hacemos que la pagina  tenga mas alto y con este primer pantallaso ya no va a meter a nuestor style.min.css y asi esto ya no va a pasar 
+
+entonces lo que tenemos que hacer es extraer el css del header, el hero y  portfolio, no nos interesa el resto
+
+entonces vamos a el website recomendado por esta clase
+
+en este sitio ponemos nuestra ruta y nuestra hoja de estilos, entonces el compara lo que se renderiza en el primer pantallazo y lo va a extraer y ese codigo lo extrae de nuestra hoja de estilos
+
+copiamos nuestros style.css y lo pegamos en este sitio web, y nos da los estilos que necesita nuestro sitio en la parte superior ese primer pantalazo
+
+teniendo eso lo copiamos y lo pegamos dentro de una etiqueta style en nuestro index.html
+
+es un monton de codigo minificado pero es solo el de ese primer pantallazo
+
+ahora solo por experimentar comentamos nuestro llamado a la hoija de estilos y abrimos en el navegador el archivo index.html y vemos que carga bien el primer pantallazo pero luego no tiene estilos, esto es critical css 
+
+descomentamos la linea que llama a los estilos y recargamos en el navegador
+
+ahora vamos a donde pusimos este critical css estamos cargando las fuentes con ../, esto no hace falta en critical css, asi que tomamos esos selectores ../, y los eliminamos asi no causa problemas en el futuro
+
+git status
+git add -A
+git commit -m 'critical css'
+git push origin master
+
+recargamos la pagina hasta ver que todo va bien 
+
+y ahora pasamos por el pagespeed insights
+
+y ya no sale el bloqueo de css , es un avance pero faltan cosas que haremos en nuestra proxima clase
